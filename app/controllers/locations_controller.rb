@@ -1,6 +1,8 @@
 class LocationsController < ApplicationController
 	def index
 	   @locations = Location.all 
+	   @locations = @locations.paginate(:page => 2, :per_page => 15)
+
 	end
 	def new
 		@location = Location.new
@@ -39,6 +41,14 @@ class LocationsController < ApplicationController
 	def show
 		@location = Location.find_by(id: params[:id])
 	end
+
+	def export
+		@locations =Location.all
+	 respond_to do |format|
+      format.html
+      format.csv { send_data @locations.to_csv, filename: "locations-#{Date.today}.csv" }
+    end
+end
 
 	private
 
