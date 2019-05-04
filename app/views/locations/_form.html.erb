@@ -1,0 +1,12 @@
+ <%=simple_form_for @location, input_html:{class: 'default_class'} do |f| %>   
+  <fieldset>           
+      <div>   
+      <%=f.input :city%>
+      <%=f.input :address%>
+    </div>
+          <div>   
+        <%= link_to 'Back', locations_path %>   
+        <%= f.submit 'Create' %>   
+      </div>   
+  <% end %>   
+</fieldset>

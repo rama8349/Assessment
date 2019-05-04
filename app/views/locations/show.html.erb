@@ -1,0 +1,16 @@
+<div class="container">        
+  <h3>Show Location</h3>   
+  <table border="2">  
+    <tr>
+      <th>City</th>
+      <th>Address</th>
+    </tr>
+    <tr>
+      <td><%= @location.city %></td>
+      <td><%= @location.address %></td>
+    </tr>
+  </table>
+  <div>   
+    <%= link_to 'Back', locations_path %>   
+  </div>   
+</div>  

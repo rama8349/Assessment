@@ -1,0 +1,27 @@
+<div class="container"> 
+<h1>Listing Locations</h1>
+<div>
+  <td><%= link_to 'New Location', new_location_path %></td>
+ </div>
+<table border="2">
+  <tr>
+    <th>City</th>
+    <th>Address</th>
+    <th>Options</th>
+  </tr>
+ 
+  <% @locations.each do |location| %>
+    <tr>
+      <td><%= link_to location.city, edit_location_path(id: location.id) %></td>
+      <td><%= location.address %></td>
+      <td>
+          <%= link_to 'Show', location_path(id: location.id) %>
+          <%= link_to 'Delete', location_path(id: location.id), method: :delete, data: {confirm: "Are you sure?"}%></td>
+      </td>
+
+    </tr>
+  <% end %>
+  
+</table>
+</div>
+      

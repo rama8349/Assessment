@@ -31,3 +31,8 @@
 
 en:
   hello: "Hello world"
+  location:
+    created_successfully: 'Location Created Successfully'
+    updated_successfully: 'Location Updted Successfully'
+    deleted_successfully: 'Location Deleted Successfully'
+
