@@ -40,19 +40,33 @@ class LocationsController < ApplicationController
 
 	def show
 		@location = Location.find_by(id: params[:hash_id])
-		# respond_to do |format|
-		# 	format.html {}
-		# 	format.json{ @location}
-		# end
+		respond_to do |format|
+			format.html {}
+			format.json{ @location}
+		end
 	end
 
 	def export
 		@locations =Location.all
-	 respond_to do |format|
-      format.html
-      format.csv { send_data @locations.to_csv, filename: "locations-#{Date.today}.csv" }
-    end
-end
+		respond_to do |format|
+		format.html
+		format.csv { send_data @locations.to_csv, filename: "locations-#{Date.today}.csv" }
+		end
+	end
+
+	########## it is strong the fileo mysql server################## t 
+
+	def export_csv
+		file_name = "C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/locations_#{Time.now.strftime('%Y-%m-%d_%H-%M-%S')}.csv"
+
+		data = ActiveRecord::Base.connection.exec_query(" SELECT city,address FROM locations 
+		INTO OUTFILE '#{file_name}' FIELDS TERMINATED BY ','
+		ENCLOSED BY '\"'
+		LINES TERMINATED BY '\n'")
+		send_file("#{file_name}" ,
+		:type => 'application/pdf/docx/html/htm/doc',
+		:disposition => 'attachment') 
+	end
 
 	private
 
