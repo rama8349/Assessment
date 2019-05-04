@@ -14,6 +14,8 @@ class Location < ApplicationRecord
     end
   end
 
+
+ 
   def self.to_csv
     attributes = %w{city address}
 

@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
 	def index
 	   @locations = Location.all 
-	   @locations = @locations.paginate(:page => 2, :per_page => 15)
+	   @locations = @locations.paginate(:page => 1, :per_page => 15)
 
 	end
 	def new
@@ -39,7 +39,11 @@ class LocationsController < ApplicationController
 	end
 
 	def show
-		@location = Location.find_by(id: params[:id])
+		@location = Location.find_by(id: params[:hash_id])
+		# respond_to do |format|
+		# 	format.html {}
+		# 	format.json{ @location}
+		# end
 	end
 
 	def export
