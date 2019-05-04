@@ -39,6 +39,11 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+  gem 'faker'
+  gem 'pry'
+  gem 'bootstrap', '~> 4.0.0' 
+  gem 'simple_form'
+  gem 'will_paginate-bootstrap4'
 end
 
 group :development do
